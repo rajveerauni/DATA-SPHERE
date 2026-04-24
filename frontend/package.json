@@ -1,0 +1,32 @@
+{
+  "name": "datasphere-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "react-plotly.js": "^2.6.0",
+    "plotly.js": "^2.33.0",
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/sortable": "^8.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "framer-motion": "^11.2.10",
+    "@tanstack/react-virtual": "^3.5.0",
+    "react-select": "^5.8.0",
+    "react-datepicker": "^6.9.0",
+    "zustand": "^4.5.2",
+    "axios": "^1.7.2",
+    "lucide-react": "^0.390.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.0",
+    "vite": "^5.2.13"
+  }
+}
