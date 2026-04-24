@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ChevronDown, ChevronRight, Compass, Moon, Sun, Upload, Zap } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { getSources } from '../api/api'
 import useAppStore from '../store/useAppStore'
 import SourceCard from './SourceCard'
@@ -11,6 +12,7 @@ export default function Sidebar({ onLoadDataset, onFileUpload, onOpenExplorer })
   const [loadingMeta, setLoadingMeta] = useState(false)
   const { isDatasetLoaded, theme, toggleTheme } = useAppStore()
   const fileInputRef = useRef(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     setLoadingMeta(true)
@@ -42,8 +44,10 @@ export default function Sidebar({ onLoadDataset, onFileUpload, onOpenExplorer })
     <div className="sidebar">
       {/* Logo */}
       <div className="sidebar__header">
-        <Zap size={18} className="logo-icon" />
-        <span className="sidebar__title">DataSphere</span>
+        <button className="sidebar__logo-btn" onClick={() => navigate('/')}>
+          <Zap size={18} className="logo-icon" />
+          <span className="sidebar__title">DataSphere</span>
+        </button>
         <button className="icon-btn theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
           {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
         </button>
