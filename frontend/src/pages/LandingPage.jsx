@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { BarChart2, Database, Filter, GitMerge, Globe, Upload, Zap } from 'lucide-react'
+import { BarChart2, Database, Filter, GitMerge, Globe, Moon, Sun, Upload, Zap } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import useAppStore from '../store/useAppStore'
 
 const FEATURES = [
   {
@@ -49,6 +50,7 @@ const fadeUp = {
 
 export default function LandingPage() {
   const navigate = useNavigate()
+  const { theme, toggleTheme } = useAppStore()
 
   return (
     <div className="landing">
@@ -59,6 +61,9 @@ export default function LandingPage() {
           <span>DataSphere</span>
         </div>
         <div className="landing-nav__actions">
+          <button className="icon-btn theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
           <button className="btn btn--ghost" onClick={() => navigate('/app')}>
             Launch App
           </button>
@@ -67,15 +72,6 @@ export default function LandingPage() {
 
       {/* ── Hero ── */}
       <section className="hero">
-        <motion.div
-          className="hero__badge"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4 }}
-        >
-          <Zap size={13} /> Data Analyst Portfolio Project
-        </motion.div>
-
         <motion.h1
           className="hero__title"
           initial="hidden"
@@ -112,7 +108,7 @@ export default function LandingPage() {
           </button>
           <a
             className="btn btn--ghost btn--lg"
-            href="https://github.com"
+            href="https://github.com/rajveerauni/DATA-SPHERE"
             target="_blank"
             rel="noreferrer"
           >
@@ -120,7 +116,6 @@ export default function LandingPage() {
           </a>
         </motion.div>
 
-        {/* Floating decoration */}
         <motion.div
           className="hero__orb hero__orb--1"
           animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.6, 0.4] }}
@@ -198,11 +193,8 @@ export default function LandingPage() {
         </motion.div>
       </section>
 
-      {/* ── Footer ── */}
       <footer className="landing-footer">
-        <span>
-          Built with Flask · React · Plotly · @dnd-kit · Framer Motion
-        </span>
+        <span>© {new Date().getFullYear()} DataSphere</span>
       </footer>
     </div>
   )

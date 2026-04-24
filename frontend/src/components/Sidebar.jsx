@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ChevronDown, ChevronRight, Compass, Upload, Zap } from 'lucide-react'
+import { ChevronDown, ChevronRight, Compass, Moon, Sun, Upload, Zap } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { getSources } from '../api/api'
 import useAppStore from '../store/useAppStore'
@@ -9,7 +9,7 @@ export default function Sidebar({ onLoadDataset, onFileUpload, onOpenExplorer })
   const [sources, setSources] = useState({})
   const [collapsed, setCollapsed] = useState({})
   const [loadingMeta, setLoadingMeta] = useState(false)
-  const { isDatasetLoaded } = useAppStore()
+  const { isDatasetLoaded, theme, toggleTheme } = useAppStore()
   const fileInputRef = useRef(null)
 
   useEffect(() => {
@@ -44,6 +44,9 @@ export default function Sidebar({ onLoadDataset, onFileUpload, onOpenExplorer })
       <div className="sidebar__header">
         <Zap size={18} className="logo-icon" />
         <span className="sidebar__title">DataSphere</span>
+        <button className="icon-btn theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+          {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+        </button>
       </div>
 
       {/* Explorer button */}

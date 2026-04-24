@@ -67,6 +67,16 @@ const useAppStore = create((set, get) => ({
   setSidebarOpen: (v) => set({ sidebarOpen: v }),
   setExplorerOpen: (v) => set({ explorerOpen: v }),
 
+  // ── Theme ────────────────────────────────────────────────────────────────────
+  theme: localStorage.getItem('ds-theme') || 'dark',
+  toggleTheme: () =>
+    set((s) => {
+      const next = s.theme === 'dark' ? 'light' : 'dark'
+      localStorage.setItem('ds-theme', next)
+      document.documentElement.setAttribute('data-theme', next)
+      return { theme: next }
+    }),
+
   // ── Derived helpers ──────────────────────────────────────────────────────────
   getActiveDataset: () => {
     const s = get()

@@ -6,7 +6,7 @@ import {
   useSensors,
 } from '@dnd-kit/core'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, AlertCircle } from 'lucide-react'
+import { Menu, Moon, Sun, X, AlertCircle } from 'lucide-react'
 import { useCallback, useState } from 'react'
 import { fetchDataset, uploadFile } from '../api/api'
 import ChartPanel from '../components/ChartPanel'
@@ -24,6 +24,7 @@ export default function Dashboard() {
     setSidebarOpen, setExplorerOpen,
     addDataset, isDatasetLoaded,
     getActiveDataset, getActiveRows,
+    theme, toggleTheme,
   } = useAppStore()
 
   const [dragActiveId, setDragActiveId] = useState(null)
@@ -99,6 +100,9 @@ export default function Dashboard() {
             {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
           <span className="dashboard__mobile-title">DataSphere</span>
+          <button className="icon-btn theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </div>
 
         {/* ── Sidebar ── */}
